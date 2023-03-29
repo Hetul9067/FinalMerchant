@@ -56,24 +56,7 @@ void User::randomNextCityAssigner() {
 	do{
 
 		nextCity = citiesLi[rand() % 3];
-		//City* tempCity = citiesLi[rand() % 3];
-		//if (nextCity != NULL) {
-		//	while (tempCity == currentCity && tempCity == nextCity) {
-		//		tempCity = citiesLi[rand() % 3];
-		//	}
-		//	nextCity = tempCity;
-		//	
-		//	/*if (tempCity == nextCity) {
-		//	nextCity = currentCity;
-
-		//	}
-		//	else {
-		//		nextCity = tempCity;
-		//	}*/
-		//}
-		//else {
-		//	nextCity = tempCity;
-		//}
+		
 	} while (nextCity == currentCity || nextCity == tempCity);
 	cout << "next city assigner function next city name: " << nextCity->getCityName() << "\n";
 }

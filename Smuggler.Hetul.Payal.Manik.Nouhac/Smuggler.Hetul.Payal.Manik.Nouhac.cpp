@@ -14,9 +14,7 @@ string userName = "";
 
 User u1;
 bool loginChecker = false;
-Item iu1("lsd", 10, 200000);
-Item iu2("weed", 15, 30);
-Item iu3("heroin", 30, 50);
+
 
 
 
@@ -24,7 +22,9 @@ static bool smugglerMenu(){
     //user initialization
     int ans = 0;
     if (u1.getName() == "") {
-        
+        Item* iu1 = new Item("lsd", 10, 200000);
+        Item* iu2 = new Item("weed", 15, 30);
+        Item* iu3 = new Item("heroin", 30, 50);
         cout << "Enter the name of the Smuggler : \n";
         cin >> userName;
 
@@ -37,7 +37,7 @@ static bool smugglerMenu(){
 
         vector<Item*> lui;
         cout << "hello this is the information regarding to user;" << "\n";
-        lui = { &iu1, &iu2, &iu3 };
+        lui = { iu1, iu2, iu3 };
         u1.setInventories(lui);
         cout << "hello  check over here @@@@@@@@@@@@@@@@@" <<u1.getInventories()[0]->getItemName() << "\n";
         cout << "hello  check over here @@@@@@@@@@@@@@@@@" <<u1.getInventories()[1]->getItemName() << "\n";

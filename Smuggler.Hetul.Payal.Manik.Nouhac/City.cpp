@@ -194,13 +194,6 @@ void City::setCityName(string name) {
 	cityName = name;
 }
 
-float City::getBuyingPrice() {
-	return buyingPrice;
-}
-
-void City::setBuyingPrice(float price) {
-	buyingPrice = price;
-}
 
 vector<Item*> City::getInventories() {
 	return inventories;

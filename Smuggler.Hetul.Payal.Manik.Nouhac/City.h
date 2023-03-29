@@ -11,8 +11,6 @@ using namespace std;
 class City {
 private:
 	string cityName;
-	float buyingPrice;
-	float sellingPrice;
 	vector<string> itemsReferenceLi;
 
 	vector<Item*> inventories;
@@ -33,10 +31,6 @@ public:
 	string getCityName();
 
 	void setCityName(string name);
-
-	float getBuyingPrice();
-
-	void setBuyingPrice(float price);
 
 	vector<Item*> getInventories();
 
