@@ -24,9 +24,9 @@ bool Display::smugglerMenu(){
     //user initialization
     int ans = 0;
     if (u1.getName() == "") {
-        Item* iu1 = new Item("lsd", 10, 200000);
-        Item* iu2 = new Item("weed", 15, 30);
-        Item* iu3 = new Item("heroin", 30, 50);
+        Item* iu1 = new Item("Lsd", 10, 200000);
+        Item* iu2 = new Item("Weed", 15, 30);
+        Item* iu3 = new Item("Heroin", 30, 50);
         cout << "Enter the name of the Smuggler : \n";
         cin >> userName;
 

@@ -58,11 +58,11 @@ bool City::checkFloat(float x) {
 //for selling wares
 void City::sellsItem() {
 	int ans = 0;
-	int quantity = 0;
+	float quantity = 0;
 	bool quantityChecker = false;
 	
 
-
+	
 	cout << "#############################################################" << "\n";
 	cout << "##### Item\t\t" << "Selling Price\t\t" << "Quantity\n";
 	for (int i = 0; i < inventories.size();i++) {

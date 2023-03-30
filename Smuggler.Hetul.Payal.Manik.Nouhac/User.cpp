@@ -105,7 +105,7 @@ void User::inventoriesListDisplay() {
 //for selling wares
 void User::sellTheirWares() {
 	int ans = 0;
-	int quantity = 0;
+	float quantity = 0;
 	bool quantityChecker = false;
 	float earnedMoney = 0;
 
@@ -292,8 +292,8 @@ void User::buyTheirWares() {
 		if (itemNumber == -1) {
 			
 			it->setName(currentCity->getInventories()[ans -1 ]-> getItemName());
+			it->setItemBuyingPrice(currentCity->getInventories()[ans - 1]->getItemSellingPrice());
 			
-			it->randomlySetBuyingPrice(currentCity->getInventories()[ans - 1]->getItemSellingPrice());
 			it->randomlySetSellingPrice();
 			it->setItemQuantity(0);
 			
@@ -306,7 +306,7 @@ void User::buyTheirWares() {
 		ite->setItemQuantity(currentCity->getInventories()[ans - 1]->getItemQuantity() - quantity);
 			
 		inventories[itemNumber ]->setItemQuantity(inventories[itemNumber ]->getItemQuantity() + quantity);
-		
+		inventories[itemNumber]->setItemBuyingPrice(currentCity->getInventories()[ans - 1]->getItemSellingPrice());
 		cout << "################################\n";
 		cout << "Total cost : " << investedMoney << "\n";
 		cout << "################################";
