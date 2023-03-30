@@ -130,11 +130,12 @@
     <ClCompile Include="City.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Item.cpp" />
-    <ClCompile Include="Smuggler.Hetul.Payal.Manik.Nouhac.cpp" />
+    <ClCompile Include="Display.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="City.h" />
+    <ClInclude Include="Display.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="statements.h" />
     <ClInclude Include="User.h" />

@@ -1,3 +1,4 @@
+#include "Display.h"
 #include "City.h"
 #include "User.h"
 #include "Item.h"
@@ -7,11 +8,11 @@
 
 using namespace std;
 
-vector<City*> cities;
-string userName = "";
-
-User u1;
-bool loginChecker = false;
+//vector<City*> cities;
+//string userName = "";
+//
+//User u1;
+//bool loginChecker = false;
 
 
 using namespace std;
@@ -22,17 +23,15 @@ int main()
 
 
     //list of cities
+    Display d1 = Display();
 
-    cities.push_back(new City("Montreal"));
-    cities.push_back(new City("Toronto"));
-    cities.push_back(new City("Vancouver"));
+    d1.addCity(new City("Montreal"));
+    d1.addCity(new City("Toronto"));
+    d1.addCity(new City("Vancouver"));
+    
+    
 
-
-    //city initialization
-
-    //items initialization for cities
-
-    //montreal's item
+    //Montreal's Items
     Item im1("lsd", 10, 20);
     Item im2("weed", 15, 40);
     Item im3("heroin", 30, 50);
@@ -40,7 +39,7 @@ int main()
 
     vector<Item*> l1;
     l1 = { &im1, &im2, &im3 };
-    cities.at(0)->setInventroies(l1);
+    d1.getCities().at(0)->setInventroies(l1);
 
 
     //cities[0]->cityMenu();
@@ -53,7 +52,7 @@ int main()
 
     vector<Item*> l2;
     l2 = { &it1, &it2, &it3, &it4 };
-    cities[1]->setInventroies(l2);
+    d1.getCities()[1]->setInventroies(l2);
 
 
     //cities[1]->cityMenu();
@@ -69,37 +68,13 @@ int main()
 
     vector<Item*> l3;
     l3 = { &iv1, &iv2, &iv3, &iv4, &iv5 };
-    cities[2]->setInventroies(l3);
+    d1.getCities()[2]->setInventroies(l3);
 
 
-    //cities[2]->cityMenu();
-
-
-
-
-    /*
-    //user initialization
-    Item iu1("lsd", 10, 20);
-    Item iu2("weed", 15, 30);
-    Item iu3("heroin", 30, 50);
-
-
-    vector<Item> lui;
-    cout << "hello this is the information regarding to user;" << "\n";
-    lui = { iu1, iu2, iu3 };
-    u1.setInventories(lui);
-    cout << "user menu ^^^^^^" << "\n";
-    u1.userMenu();
-    cout << "user menu ^^^^^^" << "\n";
-    //u1.setInventories();
-
-
-    */
-    menu();
-    ///*std::cout << "Hello World!\n";*/
-
-    //clean up dynamically allocated memory
-    for (auto c : cities) {
+    d1.menu();
+   
+    
+    for (auto c : d1.getCities()) {
         delete c;
     }
 
