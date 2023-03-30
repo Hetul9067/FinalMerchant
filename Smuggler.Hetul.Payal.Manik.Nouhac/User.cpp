@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include <cstdlib>
 
 using namespace std;
 
@@ -19,7 +19,7 @@ User::User(string n, vector<City*>& cities) {
 		//City* c = ;
 		citiesLi.push_back(new City());
 		citiesLi[i]->setCityName(cities[i]->getCityName());
-		cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$";
+		//cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$";
 		citiesLi[i]->setInventroies(cities[i]->getInventories());
 
 	}
@@ -27,10 +27,10 @@ User::User(string n, vector<City*>& cities) {
 	randomCityAssigner();
 	randomNextCityAssigner();
 
-	for (int i = 0; i < currentCity->getInventories().size(); i++) {
+	/*for (int i = 0; i < currentCity->getInventories().size(); i++) {
 		cout << "city name : " << currentCity->getCityName() << "\n";
 		
-	}
+	}*/
 }
 
 void User::randomCityAssigner() {
@@ -41,12 +41,12 @@ void User::randomCityAssigner() {
 
 		currentCity = citiesLi[rand() % 3];
 	}
-	cout << "current city name: " << currentCity->getCityName() << "/n";
+	cout << "current city name: " << currentCity->getCityName() << "\n";
 
 }
 void User::randomNextCityAssigner() {
 	//srand(time(nullptr));
-	cout << " random value" << randomValue << "\n\n\n\n";
+	
 	srand(randomValue);
 	if (randomValue == 1) randomValue = 0;
 	else randomValue = 1;
@@ -56,26 +56,9 @@ void User::randomNextCityAssigner() {
 	do{
 
 		nextCity = citiesLi[rand() % 3];
-		//City* tempCity = citiesLi[rand() % 3];
-		//if (nextCity != NULL) {
-		//	while (tempCity == currentCity && tempCity == nextCity) {
-		//		tempCity = citiesLi[rand() % 3];
-		//	}
-		//	nextCity = tempCity;
-		//	
-		//	/*if (tempCity == nextCity) {
-		//	nextCity = currentCity;
-
-		//	}
-		//	else {
-		//		nextCity = tempCity;
-		//	}*/
-		//}
-		//else {
-		//	nextCity = tempCity;
-		//}
+		
 	} while (nextCity == currentCity || nextCity == tempCity);
-	cout << "next city assigner function next city name: " << nextCity->getCityName() << "\n";
+	//cout << "Next city name: " << nextCity->getCityName() << "\n";
 }
 
 void User::inventoriesListDisplay() {
@@ -83,8 +66,8 @@ void User::inventoriesListDisplay() {
 
 	cout << "##### Item\t\t" << "Buying Price\t\t" << "Selling Price\t\t" <<"Quantity\n";
 	for (int i = 0; i < inventories.size();i++) {
-		cout << "##### " << i+1 << ". " << inventories.at(i)->getItemName() << "\t\t\t" << inventories[i]->getItemBuyingPrice()
-			<< "\t\t\t" << inventories.at(i)->getItemSellingPrice() << "\t\t" << inventories.at(i)->getItemQuantity() << "\n";
+		cout << "##### " << i+1 << ". " << inventories.at(i)->getItemName() << "\t\t\t|" << inventories[i]->getItemBuyingPrice()
+			<< "|\t\t\t|" << inventories.at(i)->getItemSellingPrice() << "|\t\t|" << inventories.at(i)->getItemQuantity() << "|\n";
 
 
 	}
@@ -102,9 +85,9 @@ void User::sellTheirWares() {
 
 
 	cout << "#############################################################" << "\n";
-	cout << "##### Item\t\t" << "Selling Price\n";
+	cout << "##### Item\t\t" << "Selling Price\t\tQuantity\n";
 	for (int i = 0; i < inventories.size();i++) {
-		cout << "##### " << i + 1 << ". " << inventories.at(i)->getItemName() << "\t\t\t" << inventories.at(i)->getItemSellingPrice() << "\n";
+		cout << "##### " << i + 1 << ". " << inventories.at(i)->getItemName() << "\t\t\t|" << inventories.at(i)->getItemSellingPrice() <<"|\t\t\t|" << inventories.at(i)->getItemQuantity() <<  "|\n";
 	}
 	cout << "#############################################################" << "\n";
 
@@ -134,7 +117,7 @@ void User::sellTheirWares() {
 
 	//decreasing user's item quantity after selling it successfully 
 	inventories[ans - 1]->setItemQuantity(inventories[ans - 1]->getItemQuantity() - quantity);
-	cout << "going to user menu";
+	cout << "going to user menu\n\n\n\n";
 	userMenu();
 }
 
@@ -149,16 +132,16 @@ void User::buyTheirWares() {
 	for (int i = 0; i < citiesLi.size();i++) {
 		cout << "------------------------------------------------";
 		cout << "city name : " << citiesLi[i]->getCityName() << "\n";
-		cout << "##### Item \t\t" << " Price\n";
+		cout << "##### Item \t\t\t" << " Price\t\t\tQuantity\n";
 		for (int j = 0; j < citiesLi[i]->getInventories().size();j++) {
-			cout << "##### " << j + 1 << ". " << citiesLi[i]->getInventories()[j]->getItemName() << "\t\t\t" << citiesLi[i]->getInventories()[j]->getItemSellingPrice() << "\n";
+			cout << "##### " << j + 1 << ". " << citiesLi[i]->getInventories()[j]->getItemName() << "\t\t\t|" << citiesLi[i]->getInventories()[j]->getItemSellingPrice() << "|\t\t\t|"  << citiesLi[i]->getInventories()[j]->getItemQuantity() << "|\n";
 
 		}
 		cout << "------------------------------------------------";
 	}
 	cout << "#############################################################" << "\n";
 	cout << "Enter 0 to exit from buying menu : \n";
-	//inventoriesListDisplay();
+	
 	cout << "Please enter the item number to buy item in " << currentCity->getCityName() << " : \n";
 	cin >> ans;
 	if (ans == 0) {
@@ -195,10 +178,8 @@ void User::buyTheirWares() {
 		//increasing user's item quantity after buying it successfully
 		int itemNumber = -1;
 		
-		//please uncomment this one %%%%%%%%
+	
 		for (int i = 0; i < inventories.size(); i++) {
-			cout << "checking :: :: :: " << inventories[i]->getItemName() << " :: :: :: " << currentCity->getInventories()[ans - 1]->getItemName() << "\n";
-			cout << "inventories[i]" << inventories[i]->getItemQuantity() << "\n";
 			if (inventories[i]->getItemName() == currentCity->getInventories()[ans - 1]->getItemName()) {
 				itemNumber = i;
 				break;
@@ -208,9 +189,9 @@ void User::buyTheirWares() {
 		
 		Item*  it = new Item();
 		if (itemNumber == -1) {
-			cout << currentCity->getInventories()[ans - 1]->getItemName() << "//////////////check here\n";
+			
 			it->setName(currentCity->getInventories()[ans -1 ]-> getItemName());
-			cout << it->getItemName() << "//////////////////here 2\n";
+			
 			it->randomlySetBuyingPrice(currentCity->getInventories()[ans - 1]->getItemSellingPrice());
 			it->randomlySetSellingPrice();
 			it->setItemQuantity(0);
@@ -249,12 +230,12 @@ void User::userAnsChecker(int a) {
 			break;
 		case 3: {
 			tempCity = currentCity;
-			cout << "welcome to new city : " << currentCity->getCityName() << "\n";
+			
 			currentCity = nextCity;
-			cout << "welcome to new city : " << currentCity->getCityName() << "\n";
-			cout << "next city : " << nextCity->getCityName()<<"\n";
+			
+			
 			randomNextCityAssigner();
-			cout << "next city : " << nextCity->getCityName()<<"\n";
+			
 			fineChecker();
 			
 			if (gameLose) {
@@ -270,8 +251,11 @@ void User::userAnsChecker(int a) {
 
 //for printing user menu
 void User:: userMenu() {
-	
+	system("cls");
+	cout << "###########################\n";
+	cout << "###########################\n";
 	cout << "Welcome to Smuggler Page : \n";
+	cout << "###########################\n";
 	cout << "Smuggler name : " << name << "\n";
 	cout << "User's total money : " << userMoney << "\n";
 	cout << "User's current City name : " << currentCity->getCityName() << "\n";
@@ -290,7 +274,7 @@ void User:: userMenu() {
 	cin >> ans;
 	if (ans == 4) return;
 	userAnsChecker(ans);
-	//cout << "User's next city name : " << nextCity->getCityName() << "\n";
+	
 				
 }
 
@@ -322,7 +306,7 @@ float User :: itemQuantitiesChecker() {
 	return totalQuantities;
 }
 void User::fineChecker() {
-	cout << "now we are in fine checker \n *********** \n******\n*******";
+	
 	float totalQuantity = itemQuantitiesChecker();
 	if (totalQuantity >= 8000)
 	{
@@ -352,15 +336,12 @@ void User::fineChecker() {
 		randomNextCityAssigner();
 		
 		//minimum one item require
-		cout << "hello\n";
+		
 		if (!inventories.empty()) {
 			inventories.pop_back();
 
 		}
-		/*else {
-			gameLose = true;
-			cout << "ohhh! You loss the game.\n";
-		}*/
+		
 		userMoney -= fine;
 		fine += 50;
 		if (userMoney <= 0) {
@@ -368,7 +349,7 @@ void User::fineChecker() {
 			cout << "ohh You lose the game!\n";
 		
 		}
-		cout << "user MOney is : " << userMoney << "\n";
+		cout << "user Money is : " << userMoney << "\n";
 
 	}
 }

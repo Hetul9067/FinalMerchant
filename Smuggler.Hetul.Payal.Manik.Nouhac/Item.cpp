@@ -17,7 +17,7 @@ Item::Item() {
 Item :: Item(string name, float bPrice, float quantity) {
 	cout << fixed << setprecision(2);
 	itemName = name;
-	cout << "hello item we are in " << itemName << "@@@@@@@@@@@@@@@@@\n";
+	//cout << "hello item we are in " << itemName << "@@@@@@@@@@@@@@@@@\n";
 	//itemBuyingPrice = bPrice;
 	randomlySetBuyingPrice(bPrice);
 	randomlySetSellingPrice();
@@ -31,8 +31,8 @@ void Item::randomlySetBuyingPrice(float bPrice) {
 	//srand(time(nullptr));
 
 	float maxPrice = bPrice * 1.50;
-	cout << "bprice : " << bPrice << "\n";
-	cout << "maxPrice : " << maxPrice << "\n";
+	//cout << "bprice : " << bPrice << "\n";
+	//cout << "maxPrice : " << maxPrice << "\n";
 	
 	int randomInt = rand();
 
@@ -40,7 +40,7 @@ void Item::randomlySetBuyingPrice(float bPrice) {
 	
 	itemBuyingPrice = (maxPrice - bPrice) * randomFloat + bPrice;
 
-	cout << "item buying Price : " << itemBuyingPrice <<"\n";
+	//cout << "item buying Price : " << itemBuyingPrice <<"\n";
 
 }
 
@@ -49,9 +49,9 @@ void Item::randomlySetSellingPrice() {
 	//srand(time(nullptr));
 
 	float maxPrice = itemBuyingPrice * 1.50;
-	cout << "item buying Price : " << itemBuyingPrice << "\n";
+	//cout << "item buying Price : " << itemBuyingPrice << "\n";
 	
-	cout << "maxPrice : " << maxPrice << "\n";
+	//cout << "maxPrice : " << maxPrice << "\n";
 	
 	int randomInt = rand();
 
@@ -59,7 +59,7 @@ void Item::randomlySetSellingPrice() {
 
 	itemSellingPrice = (maxPrice - itemBuyingPrice ) * randomFloat + (itemBuyingPrice + 1);
 	//itemSellingPrice = (rand() % (maxPrice - (int)itemBuyingPrice + 3)) + itemBuyingPrice;
-	cout << "item selling Price : " << itemSellingPrice << "\n";
+	//cout << "item selling Price : " << itemSellingPrice << "\n";
 
 }
 
