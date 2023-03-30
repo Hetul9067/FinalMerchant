@@ -10,6 +10,15 @@
 
 using namespace std;
 
+bool Display::checkInt(float x) {
+    while (cin.fail() || cin.peek() != '\n') {
+        cin.clear();
+        cin.ignore(512, '\n');
+        return true;
+    }
+    return false;
+}
+
 
 bool Display::smugglerMenu(){
     //user initialization
@@ -36,8 +45,25 @@ bool Display::smugglerMenu(){
     cout << "1. To access User Menu.\n";
     cout << "2. To go to Main Page.\n";
     cout << "#######################\n";
-    cout << "Please enter the value :\n";
-    cin >> ans;
+
+    bool checker = true;
+    do {
+        try {
+            checker = false;
+            cout << "Please enter the value :\n";
+            cin >> ans;
+            
+            if (checkInt(ans)) throw 10;
+            if (ans < 1 || ans > 2) throw 20;
+        }
+        catch (...) {
+
+            checker = true;
+            cout << "#########################\n";
+            cout << "Please enter valid input!\n";
+            cout << "#########################\n";
+        }
+    } while (checker);
     switch (ans) {
         case 1: 
             u1.userMenu();
@@ -60,8 +86,25 @@ void Display::citiesMenu() {
         cout << i + 1 << ". " << cities.at(i)->getCityName() << ".\n";
     }
     cout << i + 1 << ". To go to main page.\n";
-    cout << "Please enter the number to access specific city menu : \n";
-    cin >> ans;
+
+    bool checker = true;
+    do {
+        try {
+            checker = false;
+            cout << "Please enter the number to access specific city menu : \n";
+            cin >> ans;
+            
+            if (checkInt(ans)) throw 10;
+            if (ans < 1 || ans > i+1) throw 20;
+        }
+        catch (...) {
+
+            checker = true;
+            cout << "#########################\n";
+            cout << "Please enter valid input!\n";
+            cout << "#########################\n";
+        }
+    } while (checker);
     if (ans == i + 1) {
         return;
     }
@@ -74,6 +117,8 @@ void Display::menu() {
     int a = 0;
     system("cls");
     
+    
+    
     if(loseStatus){
 
         cout << "#####################\n";
@@ -81,7 +126,6 @@ void Display::menu() {
         cout << "#####################\n";
         loseStatus = false;
     }
-    
     if (loginChecker) {
         cout << "###########################\n";
         cout << "###########################\n";
@@ -93,8 +137,24 @@ void Display::menu() {
         cout << "Welcome to Main Page: \n\n";
     cout << "1. To access cities : \n";
     cout << "2. To access Smuggler account : \n";
-    cout << "please enter number to play game : \n";
-    cin >> a;
+
+    bool checker = true;
+    do {
+        try {
+            checker = false;
+            cout << "please enter number to play game : \n";
+            cin >> a;
+            if (checkInt(a)) throw 10;
+            if (a < 1 || a > 2) throw 20;
+        }
+        catch (...) {
+            
+            checker = true;
+            cout << "#########################\n";
+            cout << "Please enter valid input!\n";
+            cout << "#########################\n";
+        }
+    } while (checker);
     switch (a) {
         case 1:
             citiesMenu();

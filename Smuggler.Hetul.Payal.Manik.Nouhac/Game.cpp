@@ -8,14 +8,6 @@
 
 using namespace std;
 
-//vector<City*> cities;
-//string userName = "";
-//
-//User u1;
-//bool loginChecker = false;
-
-
-using namespace std;
 
 int main()
 {
@@ -32,9 +24,9 @@ int main()
     
 
     //Montreal's Items
-    Item im1("lsd", 10, 20);
-    Item im2("weed", 15, 40);
-    Item im3("heroin", 30, 50);
+    Item im1("Lsd", 10, 20);
+    Item im2("Weed", 15, 40);
+    Item im3("Heroin", 30, 50);
 
 
     vector<Item*> l1;
@@ -45,9 +37,9 @@ int main()
     //cities[0]->cityMenu();
 
     //Toronto's item
-    Item it1("lsd", 10, 20);
-    Item it2("weed", 15, 30);
-    Item it3("heroin", 30, 50);
+    Item it1("Lsd", 10, 20);
+    Item it2("Weed", 15, 30);
+    Item it3("Heroin", 30, 50);
     Item it4("Cocaine", 10, 20);
 
     vector<Item*> l2;
@@ -59,7 +51,7 @@ int main()
 
 
     //Vancouver's item
-    Item iv1("lsd", 10, 20);
+    Item iv1("Lsd", 10, 20);
     Item iv2("Weed", 15, 30);
     Item iv3("Heroin", 30, 50);
     Item iv4("Cocaine", 10, 20);

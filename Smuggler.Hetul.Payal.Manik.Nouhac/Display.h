@@ -24,6 +24,9 @@ class Display {
         bool loginChecker = false;
     public :
         User u1;
+
+        bool checkInt(float x);
+
         bool smugglerMenu();
 
         void citiesMenu();

@@ -16,13 +16,45 @@ City::City() {
 
 City ::City(string name) {
 	cityName = name;
-	itemsReferenceLi.push_back("LSD");
+	itemsReferenceLi.push_back("Lsd");
 	itemsReferenceLi.push_back("Weed");
 	itemsReferenceLi.push_back("Heroin");
 	itemsReferenceLi.push_back("Cocaine");
 	itemsReferenceLi.push_back("Cetamine");
 	
 }
+
+
+bool City::checkInt(float x) {
+	{
+		while (cin.fail() || cin.peek() != '\n') {
+			cin.clear();
+			cin.ignore(512, '\n');
+			return true;
+		}
+		return false;
+	}
+}
+
+bool City::checkFloat(float x) {
+	while (cin.fail() || cin.peek() != '\n') {
+		cin.clear();
+		cin.ignore(512, '\n');
+		return true;
+	}
+	return false;
+
+	/*if (isalpha(x))	return false;
+	if (isnan(x)) {
+		return false;
+	}
+	if (isinf(x)) return false;
+	if (floor(x) == x) return false;
+	if (!isdigit(x) && x != '.' && x != '-')	return false;
+	return true;*/
+}
+
+
 //for selling wares
 void City::sellsItem() {
 	int ans = 0;
@@ -36,16 +68,56 @@ void City::sellsItem() {
 	for (int i = 0; i < inventories.size();i++) {
 		cout << "##### " << i + 1 << ". " << inventories.at(i)->getItemName() << "\t\t\t" << inventories.at(i)->getItemSellingPrice() << "\t\t\t" << inventories.at(i)->getItemQuantity() << "\n";
 	}
-	cout << "#############################################################" << "\n";
+	
+	bool checker1 = true;
+	do {
+		try {
+			checker1 = false;
+			cout << "#############################################################" << "\n";
 
 	
-	cout << "Please enter the item number for selling : \n";
-	cin >> ans;
+			cout << "Please enter the item number for selling : \n";
+			cin >> ans;
+
+
+			if (checkInt(ans)) throw 10;
+			if (ans < 0 || ans > inventories.size()) throw 20;
+		}
+		catch (...) {
+
+			checker1 = true;
+			cout << "#########################\n";
+			cout << "Please enter valid input!\n";
+			cout << "#########################\n";
+		}
+	} while (checker1);
+
+	
 
 	do {
 
-		cout << "Please enter the quantities of the " << inventories[ans - 1]->getItemName() << " : \n";
-		cin >> quantity;
+
+		bool checker = true;
+		do {
+			try {
+				checker = false;
+				cout << "Please enter the quantities of the " << inventories[ans - 1]->getItemName() << " : \n";
+				cin >> quantity;
+
+				if (checkFloat(quantity)) throw 10;
+				//if (ans < 1 || ans > 4) throw 20;
+			}
+			catch (...) {
+
+				checker = true;
+				cout << "#########################\n";
+				cout << "Please enter valid Quantities!\n";
+				cout << "#########################\n";
+			}
+		} while (checker);
+
+
+
 		quantityChecker = false;
 		if (quantity > inventories[ans - 1]->getItemQuantity()) {
 			cout << "########################################\n";
@@ -84,18 +156,54 @@ void City::buyTheirWares() {
 	cout << "#############################################################" << "\n";
 
 	
-	cout << "Enter 0 to exit from buying menu : \n";
 	
-	cout << "Please enter the item number to buy item for " << cityName << " : \n";
-	cin >> ans;
+	bool checker1 = true;
+	do {
+		try {
+			checker1 = false;
+			cout << "#############################################################" << "\n";
+			cout << "Enter 0 to exit from buying menu : \n";
+	
+			cout << "Please enter the item number to buy item for " << cityName << " : \n";
+			cin >> ans;
+
+			if (checkInt(ans)) throw 10;
+			if (ans < 0 || ans > itemsReferenceLi.size()) throw 20;
+		}
+		catch (...) {
+
+			checker1 = true;
+			cout << "#########################\n";
+			cout << "Please enter valid input!\n";
+			cout << "#########################\n";
+		}
+	} while (checker1);
+
+	
 	if (ans == 0) {
 		cout << "Thank you for visiting buying menu!";
 		return;
 	}
 
-	cout << "Please enter the quantities of the " << itemsReferenceLi[ans - 1] << " : \n";
-	cin >> quantity;
+	bool checker = true;
+	do {
+		try {
+			checker = false;
+			cout << "Please enter the quantities of the " << itemsReferenceLi[ans - 1] << " : \n";
+			cin >> quantity;
 	
+	
+			if (checkFloat(quantity)) throw 10;
+			//if (ans < 1 || ans > 4) throw 20;
+		}
+		catch (...) {
+
+			checker = true;
+			cout << "#########################\n";
+			cout << "Please enter valid Quantities!\n";
+			cout << "#########################\n";
+		}
+	} while (checker);
 
 
 
@@ -158,8 +266,28 @@ void City::cityMenu() {
 	cout << "1. Sell city's wares\n";
 	cout << "2. Buy city's wares\n";
 	cout << "3. Going back to Main Page\n";
-	cout << "Please enter the require option : \n";
-	cin >> ans;
+	
+	
+	
+	bool checker = true;
+	do {
+		try {
+			checker = false;
+			cout << "Please enter the require option : \n";
+			cin >> ans;
+			if (checkInt(ans)) throw 10;
+			if (ans < 1 || ans > 3) throw 20;
+		}
+		catch (...) {
+
+			checker = true;
+			cout << "#########################\n";
+			cout << "Please enter valid input!\n";
+			cout << "#########################\n";
+		}
+	} while (checker);
+
+	
 	if (ans == 3) return;
 	cityAnsChecker(ans);
 	

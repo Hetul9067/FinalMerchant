@@ -20,6 +20,9 @@ public:
 	City();
 	City(string name);
 
+	bool checkInt(float x);
+	bool checkFloat(float x);
+
 	void cityAnsChecker(int a);
 
 	void cityMenu();

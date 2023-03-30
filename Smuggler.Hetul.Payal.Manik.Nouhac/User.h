@@ -31,6 +31,10 @@ public:
 	User();
 	User(string n, vector<City*> &cities);
 
+	bool checkInt(float x);
+
+	bool checkFloat(float x);
+
 	void randomCityAssigner();
 	
 	void randomNextCityAssigner();
