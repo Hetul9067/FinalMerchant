@@ -73,6 +73,15 @@ void Display::citiesMenu() {
 void Display::menu() {
     int a = 0;
     system("cls");
+    
+    if(loseStatus){
+
+        cout << "#####################\n";
+        cout << "##### GAME OVER #####\n";
+        cout << "#####################\n";
+        loseStatus = false;
+    }
+    
     if (loginChecker) {
         cout << "###########################\n";
         cout << "###########################\n";
@@ -91,9 +100,10 @@ void Display::menu() {
             citiesMenu();
             break;
         case 2: 
-            bool loseStatus = smugglerMenu();
+            loseStatus = smugglerMenu();
             if (loseStatus) {
                 u1.setName("");
+                
             }
             break;
 

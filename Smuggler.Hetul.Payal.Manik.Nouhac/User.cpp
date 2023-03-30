@@ -252,6 +252,13 @@ void User::userAnsChecker(int a) {
 //for printing user menu
 void User:: userMenu() {
 	system("cls");
+	if (caught) {
+		cout << "#############################\n";
+		cout << "You are caught by the Police!\n";
+		cout << "#############################\n";
+		caught = false;
+
+	}
 	cout << "###########################\n";
 	cout << "###########################\n";
 	cout << "Welcome to Smuggler Page : \n";
@@ -259,6 +266,10 @@ void User:: userMenu() {
 	cout << "Smuggler name : " << name << "\n";
 	cout << "User's total money : " << userMoney << "\n";
 	cout << "User's current City name : " << currentCity->getCityName() << "\n";
+	cout << "-------------------------------------------------------------------\n";
+	cout << "After reaching 100% " << name << " is going to caught by the Police\n";
+	cout << caughtPercentageCounter << "% chances to be caught by the Police\n";
+	cout << "-------------------------------------------------------------------\n";
 	
 	
 	inventoriesListDisplay();
@@ -330,6 +341,7 @@ void User::fineChecker() {
 	}
 
 	if (caughtPercentageCounter >= 100) {
+		caught = true;
 		caughtPercentageCounter = 0;
 		tempCity = currentCity;
 		currentCity = nextCity;

@@ -20,7 +20,7 @@ class Display {
 
         vector<City*> cities;
         string userName = "";
-
+        bool loseStatus = false;
         bool loginChecker = false;
     public :
         User u1;

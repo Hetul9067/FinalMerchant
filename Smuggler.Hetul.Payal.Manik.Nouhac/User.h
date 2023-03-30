@@ -23,6 +23,7 @@ private:
 	vector<City*> citiesLi;
 	bool gameLose = false;
 	int randomValue = 0;
+	bool caught = false;
 
 
 	vector<Item*> inventories;
