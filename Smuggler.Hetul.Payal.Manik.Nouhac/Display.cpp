@@ -24,7 +24,7 @@ bool Display::smugglerMenu(){
     //user initialization
     int ans = 0;
     if (u1.getName() == "") {
-        Item* iu1 = new Item("Lsd", 10, 200000);
+        Item* iu1 = new Item("Lsd", 10, 200);
         Item* iu2 = new Item("Weed", 15, 30);
         Item* iu3 = new Item("Heroin", 30, 50);
         cout << "Enter the name of the Smuggler : \n";
@@ -137,6 +137,7 @@ void Display::menu() {
         cout << "Welcome to Main Page: \n\n";
     cout << "1. To access cities : \n";
     cout << "2. To access Smuggler account : \n";
+    cout << "3. To exit from the Game : \n";
 
     bool checker = true;
     do {
@@ -145,7 +146,7 @@ void Display::menu() {
             cout << "please enter number to play game : \n";
             cin >> a;
             if (checkInt(a)) throw 10;
-            if (a < 1 || a > 2) throw 20;
+            if (a < 1 || a > 3) throw 20;
         }
         catch (...) {
             
@@ -166,6 +167,11 @@ void Display::menu() {
                 
             }
             break;
+        case 3:
+            cout << "####################\n";
+            cout << "The end of the Game!\n";
+            cout << "####################\n";
+            return;
 
     }
     loginChecker = true;
